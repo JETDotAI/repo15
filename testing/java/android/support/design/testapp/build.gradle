@@ -1,0 +1,35 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+  compile "com.android.support:support-annotations:${project.rootProject.ext.supportVersion}"
+  compile "com.android.support:appcompat-v7:${project.rootProject.ext.supportVersion}"
+  compile project(':lib')
+  compile project(
+      getTransformedProjectPath(
+          'testing/java/android/support/design/testapp/base'))
+  compile project(
+      getTransformedProjectPath(
+          'testing/java/android/support/design/testapp/custom'))
+}
+
+android {
+  // Ensures all variants are available for tests to depend on
+  publishNonDefault true
+
+  sourceSets {
+    main.manifest.srcFile 'AndroidManifest.xml'
+    main.java.srcDirs = [ '.' ]
+    main.java.excludes = [
+      '**/build/**',
+    ]
+    // Only include things in this directory, not subdirectories
+    main.java.includes = [ '*.java' ]
+    main.res.srcDirs = [ 'res' ]
+  }
+
+  buildTypes {
+    debug {
+      pseudoLocalesEnabled true
+    }
+  }
+}

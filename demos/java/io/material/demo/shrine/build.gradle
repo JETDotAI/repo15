@@ -1,0 +1,19 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+  compile project(getTransformedProjectPath('demos/java/io/material/demo/shrine/products'))
+}
+
+android {
+  sourceSets {
+    main {
+      java.includes = ['*.java']
+      java.srcDirs = ['.']
+      main.java.excludes = [
+        '**/build/**',
+      ]
+      res.srcDirs = ['res']
+      manifest.srcFile 'AndroidManifest.xml'
+    }
+  }
+}

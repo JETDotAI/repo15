@@ -1,0 +1,19 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+  compile project(getTransformedProjectPath('demos/java/io/material/demo/shrine/theme'))
+}
+
+android {
+  sourceSets {
+    main {
+      java.includes = ['*.java']
+      java.srcDirs = ['.']
+      java.excludes = [
+        '**/build/**',
+      ]
+      res.srcDirs = ['res']
+      manifest.srcFile 'AndroidManifest.xml'
+    }
+  }
+}

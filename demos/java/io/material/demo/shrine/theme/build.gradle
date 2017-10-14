@@ -1,0 +1,19 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+  compile "com.android.support:appcompat-v7:${project.rootProject.ext.supportVersion}"
+}
+
+android {
+  sourceSets {
+    main {
+      java.includes = [ '*.java' ]
+      java.srcDirs = ['.']
+      java.excludes = [
+        '**/build/**',
+      ]
+      res.srcDirs = ['res']
+      manifest.srcFile 'AndroidManifest.xml'
+    }
+  }
+}
